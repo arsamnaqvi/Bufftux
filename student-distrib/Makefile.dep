@@ -1,0 +1,28 @@
+assembly_linkage.o: assembly_linkage.S
+boot.o: boot.S multiboot.h x86_desc.h types.h
+system_call_linkage.o: system_call_linkage.S
+x86_desc.o: x86_desc.S x86_desc.h types.h
+file_system.o: file_system.c file_system.h types.h lib.h system_call.h \
+  x86_desc.h paging.h terminal.h i8259.h pit.h rtc.h
+i8259.o: i8259.c i8259.h types.h lib.h
+id_table.o: id_table.c id_table.h x86_desc.h types.h lib.h rtc.h \
+  keyboard.h i8259.h system_call.h file_system.h paging.h terminal.h \
+  pit.h
+kernel.o: kernel.c multiboot.h types.h x86_desc.h lib.h i8259.h debug.h \
+  tests.h id_table.h rtc.h keyboard.h system_call.h file_system.h \
+  paging.h terminal.h pit.h
+keyboard.o: keyboard.c keyboard.h types.h i8259.h lib.h terminal.h pit.h \
+  x86_desc.h system_call.h file_system.h paging.h rtc.h
+lib.o: lib.c lib.h types.h terminal.h i8259.h pit.h x86_desc.h paging.h \
+  system_call.h file_system.h rtc.h
+paging.o: paging.c paging.h x86_desc.h types.h
+pit.o: pit.c lib.h types.h pit.h i8259.h system_call.h file_system.h \
+  x86_desc.h paging.h terminal.h rtc.h
+rtc.o: rtc.c rtc.h types.h i8259.h lib.h system_call.h file_system.h \
+  x86_desc.h paging.h terminal.h pit.h
+system_call.o: system_call.c system_call.h types.h lib.h file_system.h \
+  x86_desc.h paging.h terminal.h i8259.h pit.h rtc.h
+terminal.o: terminal.c keyboard.h types.h i8259.h lib.h terminal.h pit.h \
+  x86_desc.h system_call.h file_system.h paging.h rtc.h
+tests.o: tests.c tests.h x86_desc.h types.h lib.h file_system.h \
+  system_call.h paging.h terminal.h i8259.h pit.h rtc.h
